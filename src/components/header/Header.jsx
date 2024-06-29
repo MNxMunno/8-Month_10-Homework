@@ -1,19 +1,22 @@
 import React from "react";
 import Logo from "../../assets/images/Logo.svg";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
       <div className="container">
         <nav>
-          <img src={Logo} alt="logo" />
+          <NavLink to={"/"}>
+            <img src={Logo} alt="logo" />
+          </NavLink>
           <ul>
-            <li>
+            <NavLink to={"/"}>
               <a href="#">Home</a>
-            </li>
-            <li>
+            </NavLink>
+            <NavLink to={"/admin"}>
               <a href="#">Bronds</a>
-            </li>
+            </NavLink>
             <li>
               <a href="#products">Recent Products</a>
             </li>
@@ -66,14 +69,16 @@ const Header = () => {
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path>
-            </svg>
+            <Link to={"/login"}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2 7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z"></path>
+              </svg>
+            </Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

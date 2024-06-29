@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import { useGetProductsQuery } from "../../context/slice/Products";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+import { CardActionArea, Pagination, Box } from "@mui/material";
+import { useGetProductsQuery } from "../../context/api/productApi";
+
+const perPageCount = 6;
 
 const Products = () => {
-  const { data } = useGetProductsQuery({ limit: 8 });
+  const [page, setPage] = useState(sessionStorage.getItem("page-count") || 1);
+  const { data } = useGetProductsQuery({ limit: perPageCount, page });
+  const handleChangePagenation = (_, value) => {
+    setPage(value);
+    sessionStorage.setItem("page-count", value);
+  };
+
+  console.log(data);
   const card = data?.data?.products?.map((product) => (
     <Card sx={{ width: 280 }}>
       <CardActionArea className="card" key={product.id}>
@@ -35,11 +42,20 @@ const Products = () => {
     <section className="productss">
       <div className="container">
         <div className="cards">{card}</div>
-        <div className="pagenation">
-          <Stack className="page" spacing={2}>
-            <Pagination count={10} color="primary" />
-          </Stack>
-        </div>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Pagination
+            page={page}
+            onChange={handleChangePagenation}
+            count={10}
+            color="primary"
+          />
+        </Box>
       </div>
     </section>
   );

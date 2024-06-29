@@ -19,3 +19,29 @@
     gap: 32px;
   }
 }
+
+.login {
+  position: relative;
+  padding: 170px 0;
+  button {
+    background: #000;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.admin {
+  padding: 170px 0;
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    .cardd {
+      border: 1ox solid #000;
+    }
+  }
+}
